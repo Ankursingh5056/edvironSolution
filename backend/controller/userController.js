@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const bcrypt = require("bcrypt")
 const userModel = require("../Model/userSchema")
 const userData = async(req,res)=>{
     try {
@@ -38,7 +39,13 @@ const createUser = async(req,res)=>{
             success: false
         })
     }
-    const data = new userModel({name,email,password, role})
+    const hasPassword = await bcrypt.hash(password,10)
+    const data = new userModel({
+        name,
+        email,
+        password : hasPassword, 
+        role 
+    })
     
     await data.save()
 

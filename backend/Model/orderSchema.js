@@ -13,13 +13,11 @@ const orderSchema = new mongoose.Schema({
     trustee_id : {
         type : String
     },
-    student_info : {
-        name : {
-            type : String,
-            id : String,
-            email : String
-        }
-    },
+   student_info: {
+    name: { type: String },
+    id: { type: String },
+    email: { type: String }
+},
 
     gateway_name : {
         type : String

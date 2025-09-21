@@ -3,6 +3,7 @@
 const express = require("express")
 // const {userData}  = require("../controller/userController")
 const { userData, createUser } = require("../controller/userController")
+const login = require("../controller/authController")
 const userRoute = express.Router()
 
 
@@ -10,8 +11,9 @@ const userRoute = express.Router()
 
 
 
-userRoute.get("/userdetails",userData)
+userRoute.get("/userdetails", userData)
 userRoute.post("/adddata",createUser)
+userRoute.post("/login",login)
 // userRoute.get("/userdetails",async(req,res)=>{
 //     try {
         
