@@ -18,7 +18,8 @@ const orderStatusSchema = new mongoose.Schema({
         type : String
     },
     payment_details :{
-        type : String
+        type : String,
+        enum: ["UPI", "Card", "NetBanking", "Wallet", "Cash"],
     },
     bank_reference : {
         type : String
@@ -27,14 +28,17 @@ const orderStatusSchema = new mongoose.Schema({
         type : String
     },
     status : {
-        type: String
+        type: String,
+        enum: ["pending", "processing", "paid", "failed", "cancelled", "completed"],
+        default: "pending"
     },
 
     error_message :{
         type : String
     },
     payment_time :{
-        type : Date
+        type : Date,
+        defauld: Date.now()
     }
 })
 
